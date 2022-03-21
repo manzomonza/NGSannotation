@@ -1,0 +1,11 @@
+Package: NGSannotation
+Type: Package
+Title: Editing, Parsing And Annotation of ThermoFisher IonReporter and Genexus Precision NGS Results
+Version: 0.1.0
+Author: Massimiliano Manzo
+Maintainer: Massimiliano Manzo <massimiliano.manzo@usb.ch>
+Description: Generates annotated files suitable for Diagnostic reporting of NGS results
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
