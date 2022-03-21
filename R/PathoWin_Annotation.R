@@ -1,5 +1,5 @@
 
-#' ## Prepapre Diagnosis column in German and French to be copy/pasted to Pathowin
+#' ## Prepare Diagnosis column in German and French to be copy/pasted to Pathowin
 #' SNV annotation
 #'
 #' @param variant_tbl 
@@ -59,7 +59,7 @@ diagnose_D_F_columns_snv <- function(variant_tbl){
   
   selection_tbl <- variant_tbl %>% 
     dplyr::rename(Transcript_ID = transcript) %>% 
-    dplyr::select(Diagnose_D,Diagnose_F, HGVS, Transcript_ID, Allelic_Frequency, BIMI_variant, Kommentar,IR_clinvar, Link_Methodik )
+    dplyr::select(Diagnose_D, Diagnose_F, Allelic_Frequency, BIMI_variant, Kommentar,IR_clinvar, Link_Methodik )
   
   selection_tbl <- selection_tbl %>% 
     dplyr::mutate(order = orderSignificance(Diagnose_D)) %>% 
