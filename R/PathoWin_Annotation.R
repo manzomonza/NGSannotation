@@ -66,10 +66,6 @@ diagnose_D_F_columns_snv <- function(variant_tbl){
     dplyr::arrange(order) %>% 
     dplyr::select(-order)
   
-  
-  
   return(selection_tbl)
 }
-
-
 

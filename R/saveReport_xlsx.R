@@ -42,8 +42,6 @@ saveReport_xlsx <- function(filepath){
     writexl::write_xlsx(excel_file, path = paste0(dir_name, "/", excel_file_name))
   }
 }
-devtools::document()
-
 
 
 
