@@ -2,7 +2,7 @@
 % Please edit documentation in R/PathoWin_Annotation.R
 \name{diagnose_D_F_columns_snv}
 \alias{diagnose_D_F_columns_snv}
-\title{## Prepapre Diagnosis column in German and French to be copy/pasted to Pathowin
+\title{## Prepare Diagnosis column in German and French to be copy/pasted to Pathowin
 SNV annotation}
 \usage{
 diagnose_D_F_columns_snv(variant_tbl)
@@ -14,6 +14,6 @@ diagnose_D_F_columns_snv(variant_tbl)
 
 }
 \description{
-## Prepapre Diagnosis column in German and French to be copy/pasted to Pathowin
+## Prepare Diagnosis column in German and French to be copy/pasted to Pathowin
 SNV annotation
 }
