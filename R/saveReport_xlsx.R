@@ -10,8 +10,8 @@ saveReport_xlsx <- function(filepath){
   dir_name = gsub(".tsv", '_watchdog', filepath)
   excel_file_name = basename(filepath)
   excel_file_name = shortenFilename(excel_file_name)
-  excel_file_name = gsub(".tsv", '_combined_output.xlsx', excel_file_name)
-  print("ok")
+  excel_file_name = paste0(excel_file_name, '_combined_output.xlsx')
+  print("Filename shortened")
   if(grepl("Snvindel.tsv", filepath)){
 
     cnv =  readr::read_tsv(paste0(dirname(filepath), "/Cnv.tsv"), skip_empty_rows = TRUE)
