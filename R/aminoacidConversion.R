@@ -10,14 +10,14 @@ aminocode['dup']  <- "dup"
 
 #' Single or three letter code
 #'
-#' @param amino_acid_change 
+#' @param amino_acid_change
 #'
 #' @return
 #' @export
 #'
 #' @examples
 oneORthree_code <- function(amino_acid_change){
-  if(stringr::str_detect(amino_acid_change, regex(pattern = '[:upper:][:digit:]'))){
+  if(stringr::str_detect(amino_acid_change, stringr::regex(pattern = '[:upper:][:digit:]'))){
     return("one")
   }else{
     return("three")
@@ -28,7 +28,7 @@ oneORthree_code <- function(amino_acid_change){
 
 #' ###### Change three to one letter code
 #'
-#' @param amino_acid_change_entry 
+#' @param amino_acid_change_entry
 #'
 #' @return
 #' @export
@@ -57,7 +57,7 @@ amino_acid_conversion_three_to_one <- function(amino_acid_change_entry){
 
 #' ###### Change one letter to three letter code
 #'
-#' @param amino_acid_change_entry 
+#' @param amino_acid_change_entry
 #'
 #' @return
 #' @export
@@ -81,15 +81,15 @@ amino_acid_conversion_one_to_three <- function(amino_acid_change_entry){
 
 #' ####### Simple One To Three AA amino acid switch, used in aa_parser_singleletter
 #'
-#' @param trimmed_string 
+#' @param trimmed_string
 #'
 #' @return
 #' @export
 #'
 #' @examples
 one_three_aa_precision <- function(trimmed_string){
-  lett = str_extract_all(trimmed_string, regex(pattern = '[[A-Z]]'))[[1]]
-  position = str_extract(trimmed_string, regex(pattern = '\\d+'))
+  lett = stringr::str_extract_all(trimmed_string, stringr::regex(pattern = '[[A-Z]]'))[[1]]
+  position = stringr::str_extract(trimmed_string, stringr::regex(pattern = '\\d+'))
 
   lett = sapply(lett, function(x) aminocode[x])
   if(is.na(lett[2])){
@@ -105,7 +105,7 @@ one_three_aa_precision <- function(trimmed_string){
 
 #' #### Complex One To Three AA switch
 #'
-#' @param parsestring 
+#' @param parsestring
 #'
 #' @return
 #' @export
@@ -121,14 +121,14 @@ complex_one_to_three <- function(parsestring){
       # Split mutation string by "_"
       double_pos = unlist(stringr::str_split(trimmed_string, pattern = "_", simplify = FALSE))
       # Extract first position
-      pos1 = stringr::str_extract(double_pos[1], regex(pattern = '\\d+'))
+      pos1 = stringr::str_extract(double_pos[1], stringr::regex(pattern = '\\d+'))
       # Extract second position
-      pos2 = stringr::str_extract(double_pos[2], regex(pattern = '\\d+'))
+      pos2 = stringr::str_extract(double_pos[2], stringr::regex(pattern = '\\d+'))
       # Split string based "_" and mutation type (delins, ins )
       aa_characters = unlist(stringr::str_split(parsestring, pattern = "_|del|delins|ins", simplify = FALSE))
       aa_characters = aa_characters[!sapply(aa_characters, function(x) x == "")]
-      from_AA = aminocode[stringr::str_extract_all(aa_characters[1], regex(pattern = '[[A-Z]]'))[[1]]]
-      to_AA = aminocode[stringr::str_extract_all(aa_characters[2], regex(pattern = '[[A-Z]]'))[[1]]]
+      from_AA = aminocode[stringr::str_extract_all(aa_characters[1], stringr::regex(pattern = '[[A-Z]]'))[[1]]]
+      to_AA = aminocode[stringr::str_extract_all(aa_characters[2], stringr::regex(pattern = '[[A-Z]]'))[[1]]]
       #print(aa_characters[3])
       if(!is.na(aa_characters[3])){
         delins_AA = stringr::str_split(aa_characters[3], pattern = "")[[1]]

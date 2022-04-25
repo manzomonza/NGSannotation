@@ -17,4 +17,6 @@ Shorten filename
 }
 \examples{
 W601.B022_v1_44534543535435345.tsv becomes 601.B022
+W775_44534543535435345.tsv becomes 601.B022
+W775.44534_543535435345.tsv becomes 601.B022
 }

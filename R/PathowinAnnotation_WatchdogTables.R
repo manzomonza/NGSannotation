@@ -2,7 +2,7 @@
 
 #' ### Annotate files in watchdog folder
 #'
-#' @param filepath 
+#' @param filepath
 #'
 #' @return
 #' @export
@@ -14,7 +14,7 @@ annotateWatchdogTables <- function(filepath){
   snv = paste0(dir_path, "/prep_snv.txt")
   cnv = paste0(dir_path, "/prep_cnv.txt")
   clinvar_annotation = paste0(dir_path, "/clinvar_annotation.txt")
-  
+
   if(file.exists(snv) & file.exists(cnv)){
     snv <- readr::read_tsv(snv)
     cnv <- readr::read_tsv(cnv)
@@ -37,4 +37,6 @@ annotateWatchdogTables <- function(filepath){
     readr::write_tsv(annotation, file = clinvar_annotation)
   }
 }
+
+
 
