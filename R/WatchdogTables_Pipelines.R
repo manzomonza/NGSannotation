@@ -1,6 +1,3 @@
-
-
-
 #' ## Output Tables pipelines
 #'
 #' @param snvindel_path
