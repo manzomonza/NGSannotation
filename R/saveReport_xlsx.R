@@ -18,16 +18,19 @@ saveReport_xlsx <- function(filepath){
     snv =  readr::read_tsv(paste0(dirname(filepath), "/Snvindel.tsv"), skip_empty_rows = TRUE)
     annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt"))
     filtered = readr::read_tsv(paste0(dir_name, "/prep_filtered.txt"))
-    if(file.exists(paste0(dirname(filepath), "/Info.csv"))){
+    infoFilepath = paste0(dirname(filepath), "/Info.csv")
+    if(file.exists(infoFilepath)){
       ## Files
-      info_csv = readr::read_tsv(paste0(dirname(filepath), "/Info.csv"))
+      info_csv = readr::read_tsv(infoFilepath)
+      sampleName = infoName(infoFilepath)
 
     }else{
       info_csv = tibble(Metadata = "Info.csv not found, no metadata provided")
+      sampleName = basename(dirname(filepath))
     }
     excel_file = list(snv, cnv, info_csv, filtered, annotation)
     names(excel_file) <- c("Snvindel.tsv", "Cnv.tsv", "Metadata", "Filtered_lines", "Annotation")
-    writexl::write_xlsx(excel_file, path = paste0(dir_name, "/GXS_combined_output.xlsx"))
+    writexl::write_xlsx(excel_file, path = paste0(dir_name, "/", sampleName, "_GXS_combined_output.xlsx"))
   }else{
     ## Files
     ir_output =  readr::read_tsv(filepath, skip_empty_rows = TRUE, comment = "##")
