@@ -1,5 +1,5 @@
 .DS_Store
-.Rhistory
+*.Rhistory
 ~Icon
 tests/
 "R/Icon\r"

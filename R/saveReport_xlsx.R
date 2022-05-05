@@ -19,9 +19,8 @@ saveReport_xlsx <- function(filepath){
     annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt"))
     filtered = readr::read_tsv(paste0(dir_name, "/prep_filtered.txt"))
     if(file.exists(paste0(dirname(filepath), "/Info.csv"))){
-    ## Files
-    info_csv = readr::read_tsv(paste0(dirname(filepath), "/Info.csv"))
-    ## Combine into list
+      ## Files
+      info_csv = readr::read_tsv(paste0(dirname(filepath), "/Info.csv"))
 
     }else{
       info_csv = tibble(Metadata = "Info.csv not found, no metadata provided")

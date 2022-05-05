@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_SNV_CNV_table.R
 \name{make_output_tables}
 \alias{make_output_tables}
-\title{## IDEA split IRoutput by type and annotate respectively}
+\title{Generate tables to export}
 \usage{
 make_output_tables(ir_output)
 }
@@ -13,5 +13,5 @@ make_output_tables(ir_output)
 
 }
 \description{
-## IDEA split IRoutput by type and annotate respectively
+Generate tables to export
 }
