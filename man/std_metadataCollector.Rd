@@ -2,7 +2,7 @@
 % Please edit documentation in R/entryTable_metadata.R
 \name{std_metadataCollector}
 \alias{std_metadataCollector}
-\title{Collects Metadata
+\title{Collects Metadata and writes out table
 This function extracts metadata stored in '##' commented lines from ThermoFisher IonReporter .tsv reports.
 Is made to only work with '##' commented files/lines.}
 \usage{
@@ -15,7 +15,7 @@ std_metadataCollector(filepath)
 A table with one column, namely ## IR Workflow Metainformation, and '##' entries as rows
 }
 \description{
-Collects Metadata
+Collects Metadata and writes out table
 This function extracts metadata stored in '##' commented lines from ThermoFisher IonReporter .tsv reports.
 Is made to only work with '##' commented files/lines.
 }

@@ -39,7 +39,6 @@ read_rename_select_precision_snv <- function(filepath){
 
     snvindelx <- exonAnnot(snvindelx) %>%
       dplyr::select(type, gene, coding, amino_acid_change, percent_frequency, location,
-                    locus, transcript, exon, copy_number, cnv_confidence, IR_clinvar, multiply_freq_by_100) %>%
-      splicesite_Annot()
+                    locus, transcript, exon, copy_number, cnv_confidence, IR_clinvar, multiply_freq_by_100)
     return(snvindelx)
   }
