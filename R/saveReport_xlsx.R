@@ -12,8 +12,8 @@ saveReport_xlsx <- function(filepath){
   excel_file_name = shortenFilename(excel_file_name)
   excel_file_name = paste0(excel_file_name, '_combined_output.xlsx')
   print("Filename shortened")
-  if(grepl("Snvindel.tsv", filepath)){
 
+  if(grepl("Snvindel.tsv", filepath)){
     cnv =  readr::read_tsv(paste0(dirname(filepath), "/Cnv.tsv"), skip_empty_rows = TRUE)
     snv =  readr::read_tsv(paste0(dirname(filepath), "/Snvindel.tsv"), skip_empty_rows = TRUE)
     annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt"))
@@ -25,7 +25,7 @@ saveReport_xlsx <- function(filepath){
       sampleName = infoName(infoFilepath)
 
     }else{
-      info_csv = tibble(Metadata = "Info.csv not found, no metadata provided")
+      info_csv = tibble::tibble(Metadata = "Info.csv not found, no metadata provided")
       sampleName = basename(dirname(filepath))
     }
     excel_file = list(snv, cnv, info_csv, filtered, annotation)
@@ -44,6 +44,3 @@ saveReport_xlsx <- function(filepath){
     writexl::write_xlsx(excel_file, path = paste0(dir_name, "/", excel_file_name))
   }
 }
-
-
-

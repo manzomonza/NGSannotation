@@ -8,6 +8,6 @@
 #' @examples
 mtbpFormat <- function(snvTable){
   snvTable = snvTable %>%
-    dplyr::mutate(mtbp = paste0(gene,':', coding))
+    dplyr::mutate(mtbp = paste0(genes,':', coding))
   return(snvTable)
 }
