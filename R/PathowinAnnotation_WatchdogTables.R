@@ -16,7 +16,6 @@ annotateWatchdogTables <- function(filepath){
   if(file.exists(snv) | file.exists(cnv)){
     if(file.exists(snv)){
       snv = readr::read_tsv(snv)
-      snv = mtbpFormat(snv)
     }
     if(file.exists(cnv)){
       cnv = readr::read_tsv(cnv)
