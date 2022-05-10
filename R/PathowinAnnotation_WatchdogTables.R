@@ -1,5 +1,3 @@
-
-
 #' ### Annotate files in watchdog folder
 #'
 #' @param filepath
@@ -19,6 +17,9 @@ annotateWatchdogTables <- function(filepath){
     snv <- readr::read_tsv(snv)
     cnv <- readr::read_tsv(cnv)
     cnv <- cnvAnnot(cnv) %>% dplyr::select(Diagnose_D, Diagnose_F) %>% na.omit()
+
+    # Addition of MTBP column
+    snv = mtbpFormat(snv)
     if(nrow(snv) > 0){
       snv <- bimiMatchUp(snv)
       snv <- clinvarTableOutput(snv)
@@ -37,6 +38,4 @@ annotateWatchdogTables <- function(filepath){
     readr::write_tsv(annotation, file = clinvar_annotation)
   }
 }
-
-
 
