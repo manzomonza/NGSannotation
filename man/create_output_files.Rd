@@ -7,11 +7,6 @@ Generates various output files from IonReporter and Genexus files, respectively}
 \usage{
 create_output_files(list_of_tables, filepath)
 }
-\arguments{
-\item{list_of_tables}{}
-
-\item{filepath}{}
-}
 \description{
 #### Function to write out tables create_output_files
 Generates various output files from IonReporter and Genexus files, respectively

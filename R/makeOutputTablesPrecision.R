@@ -22,6 +22,7 @@ make_output_tables_precision <- function(snv_indel, cnv){
   ## Edit AA changes
   snv$three_AA <- sapply(snv$amino_acid_change, amino_acid_conversion_one_to_three )
   snv$one_AA <-   sapply(snv$amino_acid_change, amino_acid_conversion_three_to_one )
+  snv$one_AA <- gsub("Ter", "\\*", snv$one_AA)
   snv$clinvar_ready_AA <- sapply(snv$three_AA, fsClinvarfix)
 
   snv <- snv %>%
