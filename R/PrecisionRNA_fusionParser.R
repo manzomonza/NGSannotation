@@ -49,11 +49,7 @@ FusionOutput <- function(fusionpath){
   ## create output dir
   dir.create(dirname)
   ## Original File
-  orig = readr::read_csv(fusionpath) %>%
-    dplyr::rename(metadata = 1) %>%
-    tidyr::separate(col = metadata, into = c('parameter', 'value'), sep = ",",
-                    extra = 'merge',
-                    fill = "right")
+  orig = readr::read_tsv(fusionpath, skip_empty_rows = TRUE)
   ## Info File
   infoPath = paste0(dirname(fusionpath), "/Info.csv")
   if (file.exists(infoPath)){
