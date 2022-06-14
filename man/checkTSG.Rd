@@ -7,10 +7,6 @@
 checkTSG(gene, aa_pos, TSG_list)
 }
 \arguments{
-\item{gene}{}
-
-\item{aa_pos}{}
-
 \item{TSG_list}{}
 }
 \value{
