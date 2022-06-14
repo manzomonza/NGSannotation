@@ -37,7 +37,7 @@ tsgParseTable <- function(snvtable){
     snvtable$aa_pos = as.numeric(sapply(snvtable$one_AA, function(x) stringr::str_remove_all(string = x, pattern = "\\D")))
     snvtable$tsgInfo = NA
     for (i in 1:nrow(snvtable)){
-      if(grepl("*|fs", snvtable$one_AA[i])){
+      if(grepl("\\*|fs", snvtable$one_AA[i])){
       snvtable$tsgInfo[i] = checkTSG(gene = snvtable$genes[i],
                                      aa_pos = snvtable$aa_pos[i],
                                      TSG_list = tsg_ls)
