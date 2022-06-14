@@ -28,6 +28,7 @@ annotateWatchdogTables <- function(filepath){
       snv = bimiMatchUp(snv)
       snv = clinvarTableOutput(snv)
       snv = diagnose_D_F_columns_snv(snv)
+      snv = tsgParseTable(snv)
     }
     if(nrow(snv) > 0 & nrow(cnv) > 0){
       annotation = dplyr::bind_rows(snv, cnv)
