@@ -38,7 +38,7 @@ tsgParseTable <- function(snvtable){
     snvtable$tsgInfo = NA
     for (i in 1:nrow(snvtable)){
       if(grepl("\\*|fs", snvtable$clinvar_ready_AA[i])){
-      snvtable$tsgInfo[i] = checkTSG(gene = snvtable$genes[i],
+      snvtable$tsgInfo[i] = checkTSG(gene = snvtable$gene[i],
                                      aa_pos = snvtable$aa_pos[i],
                                      TSG_list = tsg_ls)
 
