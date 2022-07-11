@@ -33,7 +33,6 @@ print(opt$file)
 ## Source config
 source("/home/ionadmin/ngs_variant_annotation/variantAnnotation/scripts/NGSannotation_config.R")
 
-
 ################################################# IR MUTATION REPORT ANNOTATION #################################################
 ################################################# PIPELINE SELECTION #################################################
 

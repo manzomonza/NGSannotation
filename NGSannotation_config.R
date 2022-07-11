@@ -27,10 +27,10 @@ print("CLINVAR: loaded")
 
 
 ##### COSMIC VARIANT SQLITE database
-library(RMySQL)
 
-SQLITE <- dbDriver("SQLite")
-CONN <- dbConnect(sqlite, 'cut_cosmic_head.db',
+COSMIC_SQL <- '/home/ionadmin/ngs_variant_annotation/variantAnnotation/cosmic/cut_CosmicVariant.sdb'
+SQLITE <- DBI::dbDriver("SQLite")
+CONN <- dbConnect(SQLITE, COSMIC_SQL,
                   encoding = "ISO-8859-1")
 CON_TBL <- dplyr::tbl(CONN, "cosmic_var")
 
