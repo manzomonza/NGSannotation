@@ -10,7 +10,7 @@ checkTSG(gene, aa_pos, TSG_list)
 \item{TSG_list}{}
 }
 \value{
-'pathogenic' if criteria are fullfilled, NA otherwise
+'likely pathogenic' if criteria are fullfilled, NA otherwise
 }
 \description{
 Checks if gene is part of TSG and checks position
