@@ -1,7 +1,6 @@
-
 #' Add missing columns to make inconsistent IR output work
 #'
-#' @param ir_output 
+#' @param ir_output
 #'
 #' @return
 #' @export
@@ -17,7 +16,7 @@ addMissingCols <- function(ir_output){
   if(!"locus" %in% colnames(ir_output)){
     ir_output$locus <- NA
   }
-  
+
   if(!"IR_clinvar" %in% colnames(ir_output)){
     ir_output$IR_clinvar <- NA
   }
@@ -27,6 +26,6 @@ addMissingCols <- function(ir_output){
   if(!"transcript" %in% colnames(ir_output)){
     ir_output$transcript <- NA
   }
-  
+
   return(ir_output)
 }

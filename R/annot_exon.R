@@ -2,20 +2,20 @@
 
 #' ### ExonAnnot
 #'
-#' @param mutation_table 
+#' @param mutation_table
 #'
 #' @return
 #' @export
 #'
 #' @examples
 exonAnnot <- function(mutation_table){
-  
+
   ## Generate iterable id
   mutation_table <- mutation_table %>% rowid_to_column()
-  
+
   ## Convert locus to GenomicRange and extract Exon information when locus overlaps exon
-  mutation.gr = lapply(mutation_table$rowid, function(x)  subsetByOverlaps(exon.gr, GRanges(mutation_table[x,]$locus)) %>%
-                         as_tibble() %>%
+  mutation_gr = lapply(mutation_table$rowid, function(x)  subsetByOverlaps(EXON_GR, GRanges(mutation_table[x,]$locus)) %>%
+                         tibble::as_tibble() %>%
                          dplyr::select(hg19_ref_gene_name2, hg19_ref_gene_name_hg_fixed_gb_cdna_info_version, exonNo ) %>%
                          dplyr::rename(transcript = hg19_ref_gene_name_hg_fixed_gb_cdna_info_version,
                                        gene = hg19_ref_gene_name2,
@@ -26,7 +26,7 @@ exonAnnot <- function(mutation_table){
   # mutation.gr$exonNo[unlist(lapply(mutation.gr$exonNo, function(x) identical(x, integer(0))))] <- NA
   # ## Add exonNo column to mutation_table
   # mutation_table$exon <- unlist(mutation.gr$exonNo)
-  mutation_table <- left_join(mutation_table, bind_rows(mutation.gr), by = c("rowid","gene")) %>%
+  mutation_table <- dplyr::left_join(mutation_table, dplyr::bind_rows(mutation_gr), by = c("rowid","gene")) %>%
     dplyr::relocate(transcript, exon) %>%
     dplyr::mutate(clin_var = NA) %>%
     dplyr::select(-rowid)

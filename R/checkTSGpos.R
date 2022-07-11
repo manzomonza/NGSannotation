@@ -40,7 +40,7 @@ tsgParseTable <- function(snvtable){
       if(grepl("\\*|fs", snvtable$one_AA[i])){
       snvtable$tsgInfo[i] = checkTSG(gene = snvtable$genes[i],
                                      aa_pos = snvtable$aa_pos[i],
-                                     TSG_list = tsg_ls)
+                                     TSG_list = TSG_LENGTHS)
 
       }
     }

@@ -10,7 +10,7 @@ Caveat: Absolute paths are specified}
 clinvarCheck()
 }
 \arguments{
-\item{clinvar_summary_filepath}{Absolute filepath of clinvar summary file}
+\item{CLINVAR_SUMMARY_FILEPATH}{Absolute filepath of clinvar summary file}
 }
 \value{
 Boolean indicating if downloaded file has same MD5checksum as MD5checksum on NIH website

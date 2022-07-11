@@ -1,12 +1,3 @@
-
-## PROBLEM -- some mutations may be missed in the way the clinvar function checks for mutations
-
-## Approach -- check coding first, then amino acid,
-## if coding is not found,
-## also check for amino acid change
-
-clinvar_summary_filepath = "/home/ionadmin/ngs_variant_annotation/variantAnnotation/clinvar/variant_summary.txt.gz"
-
 ################################################# Check for presence of Clinvar variant summary file (and it being up-to-date)   #################################################
 
 ################################################# )   #################################################
@@ -14,7 +5,7 @@ clinvar_summary_filepath = "/home/ionadmin/ngs_variant_annotation/variantAnnotat
 #' Checks for presence of Clinvar variant summary file (and it being up-to-date).
 #' If not present (or up-to date, downloads from NIH at absolute path)
 #' Caveat: Absolute paths are specified
-#' @param clinvar_summary_filepath Absolute filepath of clinvar summary file
+#' @param CLINVAR_SUMMARY_FILEPATH Absolute filepath of clinvar summary file
 #' @return Boolean indicating if downloaded file has same MD5checksum as MD5checksum on NIH website
 #'
 #' @export
@@ -28,17 +19,15 @@ clinvarCheck <- function(){
   # return(getHTMLLinks(clinvarDir))
   ## new solution
   ## Check if MD5 sum of local variant_summary.txt.gz matches the current online one
-  if(!file.exists(clinvar_summary_filepath)){
+  if(!file.exists(CLINVAR_SUMMARY_FILEPATH)){
     download.file("https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz",
-                  destfile=clinvar_summary_filepath)
+                  destfile=CLINVAR_SUMMARY_FILEPATH)
   }
-  md5check <- md5sum(clinvar_summary_filepath) ==
+  md5check <- md5sum(CLINVAR_SUMMARY_FILEPATH) ==
     strsplit(getURL("https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz.md5"), split = " ")[[1]][1]
 
   return(md5check)
 }
-
-
 
 
 
@@ -77,7 +66,7 @@ clinvarSingleRow <- function(srvt){
   }else{
     ## Amino acid change NA or p.?
     ## Only greps 'coding' entry
-    clinvar_hits <- clinvar %>%
+    clinvar_hits <- CLINVAR %>%
       dplyr::filter(gene_symbol %in% srvt$gene) %>%
       dplyr::filter(grepl(srvt$coding, name, fixed = TRUE))
     if(nrow(clinvar_hits) == 1){
