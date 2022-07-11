@@ -30,8 +30,11 @@ opt = parse_args(opt_parser)
 
 print(opt$file)
 
-################################################# IR MUTATION REPORT ANNOTATION #################################################
+## Source config
+source("/home/ionadmin/ngs_variant_annotation/variantAnnotation/scripts/NGSannotation_config.R")
 
+
+################################################# IR MUTATION REPORT ANNOTATION #################################################
 ################################################# PIPELINE SELECTION #################################################
 
 
