@@ -34,4 +34,3 @@ CONN <- dbConnect(SQLITE, COSMIC_SQL,
                   encoding = "ISO-8859-1")
 CON_TBL <- dplyr::tbl(CONN, "cosmic_var")
 
-
