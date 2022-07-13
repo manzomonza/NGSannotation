@@ -44,7 +44,7 @@ counter_cosmic_variant_tissue <- function(gene, change, sql_con_tbl){
   if(COSMIC_n_total == 0){
     COSMIC_n_tissue = NA
   }else{
-    COSMIC_n_tissue = paste0(count_variants_per_tissue$primary_site, " (", count_variants_per_tissue$n, ")")
+    COSMIC_n_tissue = paste0(paste0(count_variants_per_tissue$primary_site, " (", count_variants_per_tissue$n, ")"), collapse = "; ")
   }
   cosmic_results = list(COSMIC_n_tissue = COSMIC_n_tissue,
                         COSMIC_n_total = COSMIC_n_total)
@@ -66,6 +66,7 @@ cosmic_counter_wrapper <- function(snv_table){
   snv_table$COSMIC_n_tissue = NA
 
   cosmic_count_results = lapply(snv_table$rowid, function(x)  cosmic_counter_per_table_element(snv_table[x,]))
+
   for (row_index in snv_table$rowid){
     snv_table$COSMIC_n_total[row_index] = cosmic_count_results[[row_index]]$COSMIC_n_total
     snv_table$COSMIC_n_tissue[row_index] = cosmic_count_results[[row_index]]$COSMIC_n_tissue
