@@ -41,7 +41,7 @@ clinvarCheck <- function(){
 #' @examples
 clinvarSingleRow <- function(srvt){
   if(srvt$clinvar_ready_AA != "p.?" & !is.na(srvt$clinvar_ready_AA)){
-    clinvar_hits <- clinvar %>%
+    clinvar_hits <- CLINVAR %>%
       dplyr::filter(gene_symbol %in% srvt$gene) %>%
       dplyr::filter(grepl(srvt$coding, name, fixed = TRUE)) %>%
       dplyr::filter(grepl(srvt$clinvar_ready_AA, name, fixed = TRUE))
@@ -52,7 +52,7 @@ clinvarSingleRow <- function(srvt){
       srvt$coding_match = TRUE
       return(srvt)
     }else{
-      clinvar_hits <- clinvar %>%
+      clinvar_hits <- CLINVAR %>%
         dplyr::filter(gene_symbol %in% srvt$gene) %>%
         dplyr::filter(grepl(srvt$clinvar_ready_AA, name, fixed = TRUE))
         ## Amino acid change was found but not coding
@@ -113,7 +113,7 @@ clinvarTableOutput <- function(snv_tb){
 #
 #   if(srvt$clinvar_ready_AA != "p.?" & !is.na(srvt$clinvar_ready_AA)){
 #
-#     clinvar_hits = clinvar %>%
+#     clinvar_hits = CLINVAR %>%
 #       dplyr::filter(gene_symbol == srvt$gene) %>%
 #       dplyr::filter(grepl(srvt$coding, name, fixed = T)) %>%
 #       #dplyr::filter(grepl(srvt$transcript, name)) %>%
