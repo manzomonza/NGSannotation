@@ -30,6 +30,7 @@ annotateWatchdogTables <- function(filepath){
       snv = diagnose_D_F_columns_snv(snv)
       snv = tsgParseTable(snv)
       snv_cosmic = cosmic_counter_wrapper(readr::read_tsv(paste0(dir_path, "/prep_snv.txt")))
+      snv_cosmic = snv_cosmic %>% dplyr::select(3:5, contains("COSMIC"))
       snv = dplyr::left_join(snv, snv_cosmic)
     }
     if(nrow(snv) > 0 & nrow(cnv) > 0){
