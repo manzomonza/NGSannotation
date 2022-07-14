@@ -35,9 +35,8 @@ annotateWatchdogTables <- function(filepath){
       if(!'gene' %in% colnames(snv) & 'genes' %in% colnames(snv)){
         snv$gene = snv$genes
         }
-      snv = dplyr::left_join(snv, snv_cosmic, by = c("gene", 'coding','amino_acid_change'))
-
-    }
+      snv = dplyr::left_join(snv, snv_cosmic, by = c("gene", 'coding'))
+}
     if(nrow(snv) > 0 & nrow(cnv) > 0){
       annotation = dplyr::bind_rows(snv, cnv)
     }else if(nrow(snv) > 0 & nrow(cnv) == 0){
