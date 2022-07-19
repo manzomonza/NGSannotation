@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples GATA3 p.M294K returns list with
-#' COSMIC_n_tissuebreast (43)
+#' COSMIC_n_tissue breast (43)
 #' COSMIC_n_total 43
 counter_cosmic_variant_tissue <- function(gene, change, sql_con_tbl){
   require(magrittr)
@@ -17,9 +17,9 @@ counter_cosmic_variant_tissue <- function(gene, change, sql_con_tbl){
                           COSMIC_n_total = NA)
     return(cosmic_results)
   }
-  gene = paste0("%", gene, "%")
+  #gene = paste0("%", gene, "%")
   orig_change = change
-  change = paste0("%", change, "%")
+  #change = paste0("%", change, "%")
 
   ##
   variants_per_tissue = sql_con_tbl %>%
@@ -27,11 +27,11 @@ counter_cosmic_variant_tissue <- function(gene, change, sql_con_tbl){
 
   if(grepl("^c.", orig_change)){
   variants_per_tissue = variants_per_tissue %>%
-    dplyr::filter(mutation_cds %LIKE% change) %>%
+    dplyr::filter(mutation_cds == change) %>%
     dplyr::collect()
   }else if(grepl("^p.", orig_change)){
     variants_per_tissue = variants_per_tissue %>%
-      dplyr::filter(mutation_aa %LIKE% change) %>%
+      dplyr::filter(mutation_aa == change) %>%
       dplyr::collect()
   }else{
     cosmic_results = list(COSMIC_n_tissue = NA,
@@ -84,15 +84,15 @@ cosmic_counter_wrapper <- function(snv_table){
 #' @examples
 cosmic_counter_per_table_element <- function(table_element){
   if(is.na(table_element$amino_acid_change) | table_element$amino_acid_change == "p.?"){
-    comic_count = counter_cosmic_variant_tissue(gene = table_element$gene,
+    cosmic_count = counter_cosmic_variant_tissue(gene = table_element$gene,
                                                 change = table_element$coding,
                                                 sql_con_tbl = CON_TBL)
   }else{
-    comic_count = counter_cosmic_variant_tissue(gene = table_element$gene,
+    cosmic_count = counter_cosmic_variant_tissue(gene = table_element$gene,
                                                 change = table_element$one_AA,
                                                 sql_con_tbl = CON_TBL)
   }
-  return(comic_count)
+  return(cosmic_count)
 }
 
 
