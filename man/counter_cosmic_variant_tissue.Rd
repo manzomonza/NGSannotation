@@ -21,6 +21,6 @@ Count variant occurences per tissue in COSMIC db
 }
 \examples{
 GATA3 p.M294K returns list with
-COSMIC_n_tissuebreast (43)
+COSMIC_n_tissue breast (43)
 COSMIC_n_total 43
 }
