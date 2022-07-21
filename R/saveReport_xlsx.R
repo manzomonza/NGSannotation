@@ -23,6 +23,8 @@ saveReport_xlsx <- function(filepath){
       ## Files
       info_csv = readr::read_tsv(infoFilepath)
       sampleName = infoName(infoFilepath)
+      file.copy(from = infoFilepath, to = dir_name)
+
 
     }else{
       info_csv = tibble::tibble(Metadata = "Info.csv not found, no metadata provided")
