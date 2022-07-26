@@ -34,3 +34,15 @@ CONN <- dbConnect(SQLITE, COSMIC_SQL,
                   encoding = "ISO-8859-1")
 CON_TBL <- dplyr::tbl(CONN, "cosmic_var")
 
+
+## CANCER HOTSPOTS
+
+CANCER_HOTSPOTS <- readxl::read_xls('/home/ionadmin/ngs_variant_annotation/variantAnnotation/cancerHotspots/hotspots_V2.xls')
+CANCER_HOTSPOTS <- CANCER_HOTSPOTS %>% dplyr::select(Hugo_Symbol, Amino_Acid_Position, n_MSK, n_Retro, inOncokb, inNBT ) |>
+  dplyr::distinct() |>
+  dplyr::arrange(Hugo_Symbol) |>
+  dplyr::mutate(n_total = as.numeric(n_MSK) + as.numeric(n_Retro)) |>
+  dplyr::select(Hugo_Symbol, Amino_Acid_Position, n_total)
+colnames(CANCER_HOTSPOTS)[1] <- 'gene'
+
+

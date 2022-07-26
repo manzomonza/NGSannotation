@@ -31,12 +31,21 @@ annotateWatchdogTables <- function(filepath){
       snv = tsgParseTable(snv)
       snv_cosmic = cosmic_counter_wrapper(readr::read_tsv(paste0(dir_path, "/prep_snv.txt")))
       snv_cosmic = snv_cosmic %>% dplyr::select(3:5, contains("COSMIC"))
+      # CANCER HOTSPOTS
+      snv_cancerHotspot = wrapper_table_cancerHotspots(readr::read_tsv(paste0(dir_path, "/prep_snv.txt")))
+      snv_cancerHotspot = snv_cancerHotspot %>% dplyr::select(3:5, cancerHotspot)
+
+
+
       # GENE COLUMN NAME PROBLEM
       if(!'gene' %in% colnames(snv) & 'genes' %in% colnames(snv)){
         snv$gene = snv$genes
-        }
+      }
+      #Join cosmic
       snv = dplyr::left_join(snv, snv_cosmic, by = c("gene", 'coding'))
-}
+      #Join cancerhotspot
+      snv = dplyr::left_join(snv, snv_cancerHotspot, by = c("gene", 'coding'))
+    }
     if(nrow(snv) > 0 & nrow(cnv) > 0){
       annotation = dplyr::bind_rows(snv, cnv)
     }else if(nrow(snv) > 0 & nrow(cnv) == 0){

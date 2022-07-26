@@ -1,23 +1,58 @@
-# CancerHotspots
+#' Retrieve if variant codon position is covered in cancerHotspots (v2)
+#'
+#' @param gene
+#' @param snv_position
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' Retrieves No. of total entries in CANCER_HOTSPOTS
+#' KRAS p.G12C retrieves n_total == 2175
+info_cancerHotspots <- function(geneName, snv_position){
+  if(geneName %in% CANCER_HOTSPOTS$gene){
+    ch = CANCER_HOTSPOTS %>% dplyr::filter(gene == geneName)
+    if(snv_position %in% ch$Amino_Acid_Position){
+      ch = ch %>% dplyr::filter(Amino_Acid_Position == snv_position)
+      ch = ch %>% dplyr::pull(n_total)
+    return(ch)
+    }else{
+      return(NA)
+    }
+  }else{
+    return(NA)
+  }
+}
 
-ch2 = readxl::read_xls("/Users/manzo/Downloads/hotspots_v2.xls")
+#' Apply cancerhotspot check to single row
+#'
+#' @param variantRow
+#'
+#' @return
+#' @export
+#'
+#' @examples
+wrapper_row_cancerHotspots <- function(variantRow){
+  variantRow$aa_position = extract_snv_position(variantRow$one_AA)
+  variantRow$cancerHotspot = info_cancerHotspots(geneName = variantRow$gene,
+                                                 snv_position = variantRow$aa_position)
+  return(variantRow)
+}
 
-
-ch2 <- ch2 %>% dplyr::select(Hugo_Symbol, Amino_Acid_Position, n_MSK, n_Retro, inOncokb, inNBT ) |>
-  dplyr::distinct() |>
-  dplyr::arrange(Hugo_Symbol) |>
-  dplyr::mutate(n_total = as.numeric(n_MSK) + as.numeric(n_Retro))
-
-
-testdir = '/Volumes/GoogleDrive/.shortcut-targets-by-id/1yuFiN1dlcUgo1_ELdNVXegTfB61oDv8G/Patientendaten/2022/W1851_W1900'
-testfiles <- list.files(path = testdir, "prep_snv.txt", recursive = TRUE, full.names = TRUE)
-
-testfiles <- lapply(testfiles, data.table::fread)
-testfiles <- lapply(testfiles, function(x) x %>% dplyr::mutate(across(.cols = everything(), .fns = as.character)))
-testfiles <- dplyr::bind_rows(testfiles)
-
-sapply(testfiles$one_AA, extract_snv_position)
-
+#' Apply cancerhotspot check to snv_variant table
+#'
+#' @param variantTable
+#'
+#' @return
+#' @export
+#'
+#' @examples
+wrapper_table_cancerHotspots <- function(variantTable){
+  variantTable = variantTable %>% tibble::rowid_to_column()
+  variantTable = lapply(variantTable$rowid, function(x) wrapper_row_cancerHotspots(variantTable[x,]))
+  variantTable = dplyr::bind_rows(variantTable)
+  return(variantTable)
+}
 
 
 

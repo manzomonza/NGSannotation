@@ -4,7 +4,7 @@
 \alias{std_metadataCollector}
 \title{Collects Metadata and writes out table
 This function extracts metadata stored in '##' commented lines from ThermoFisher IonReporter .tsv reports.
-Is made to only work with '##' commented files/lines.}
+It's made to only work with '##' commented files/lines.}
 \usage{
 std_metadataCollector(filepath)
 }
@@ -17,5 +17,5 @@ A table with one column, namely ## IR Workflow Metainformation, and '##' entries
 \description{
 Collects Metadata and writes out table
 This function extracts metadata stored in '##' commented lines from ThermoFisher IonReporter .tsv reports.
-Is made to only work with '##' commented files/lines.
+It's made to only work with '##' commented files/lines.
 }

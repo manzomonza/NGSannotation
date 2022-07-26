@@ -1,6 +1,6 @@
-### Check if Gene is TSG and if variant leads to Ter or frameshift within 90% of AA length
+###
 
-#' Checks if gene is part of TSG and checks position
+#' Check if Gene is TSG and if variant leads to Ter or frameshift within 90% of AA length
 #'
 #' @param gene
 #' @param aa_pos
@@ -17,14 +17,14 @@ checkTSG <- function(gene, aa_pos, TSG_list){
       return(interpretation)
     }else{
       return(NA)
-      }
-  }else{
-      return(NA)
     }
+  }else{
+    return(NA)
+  }
 }
 
 
-#' tsgParseTable Parse SNV which went through 'watchdog annotation' step
+#' tsgParseTable Checks SNV contains 'fs' or 'Ter'
 #'
 #' @param snvtable
 #'
@@ -34,13 +34,12 @@ checkTSG <- function(gene, aa_pos, TSG_list){
 #' @examples
 tsgParseTable <- function(snvtable){
   if(nrow(snvtable) >0){
-    snvtable$aa_pos = as.numeric(sapply(snvtable$clinvar_ready_AA, function(x) stringr::str_remove_all(string = x, pattern = "\\D")))
     snvtable$tsgInfo = NA
     for (i in 1:nrow(snvtable)){
       if(grepl("\\*|fs", snvtable$one_AA[i])){
-      snvtable$tsgInfo[i] = checkTSG(gene = snvtable$genes[i],
-                                     aa_pos = snvtable$aa_pos[i],
-                                     TSG_list = TSG_LENGTHS)
+        snvtable$tsgInfo[i] = checkTSG(gene = snvtable$genes[i],
+                                       aa_pos = snvtable$aa_pos[i],
+                                       TSG_list = tsg_ls)
 
       }
     }
@@ -48,3 +47,26 @@ tsgParseTable <- function(snvtable){
     return(snvtable)
   }
 }
+
+#' Extract position of SNVs
+#'
+#' @param clinvar_ready_AA
+#'
+#' @return SNV amino-acid position
+#' @export
+#'
+#' @examples
+extract_snv_position <- function(aa_change){
+  if(is.character(aa_change) &  !is.na(aa_change)){
+    aa_pos = stringr::str_extract(string = aa_change, pattern = "(?<=\\D)\\d+")
+    aa_pos = as.integer(aa_pos)
+    return(aa_pos)
+  }else{
+    return(NA)
+  }
+}
+
+
+
+
+
