@@ -34,3 +34,9 @@ CONN <- dbConnect(SQLITE, COSMIC_SQL,
                   encoding = "ISO-8859-1")
 CON_TBL <- dplyr::tbl(CONN, "cosmic_var")
 
+#### CANCER HOTSPOTS
+CANCER_HOTSPOTS <- '/home/ionadmin/ngs_variant_annotation/variantAnnotation/cancerHotspots/hotspots_v2.xls'
+
+
+
+
