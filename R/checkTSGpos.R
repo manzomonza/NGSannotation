@@ -10,9 +10,9 @@
 #' @export
 #'
 #' @examples
-checkTSG <- function(gene, aa_position, TSG_list){
-  if(gene %in% names(TSG_list) & !is.na(aa_position)){
-    if(aa_position <= round(0.9 * TSG_list[[gene]])){
+checkTSG <- function(gene, aa_pos, TSG_list){
+  if(gene %in% names(TSG_list) & !is.na(aa_pos)){
+    if(aa_pos <= round(0.9 * TSG_list[[gene]])){
       interpretation = 'likely pathogenic'
       return(interpretation)
     }else{

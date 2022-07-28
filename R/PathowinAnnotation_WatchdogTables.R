@@ -31,13 +31,13 @@ annotateWatchdogTables <- function(filepath){
 
       # TSG annotation
       snv_tsg = tsgParseTable(readr::read_tsv(paste0(dir_path, "/prep_snv.txt")))
-      snv_tsg = snv_tsg %>% dplyr::select(3:5, tsgInfo)
+      snv_tsg = snv_tsg %>% dplyr::select(gene, coding, tsgInfo)
       # COSMIC COUNTER
       snv_cosmic = cosmic_counter_wrapper(readr::read_tsv(paste0(dir_path, "/prep_snv.txt")))
-      snv_cosmic = snv_cosmic %>% dplyr::select(3:5, contains("COSMIC"))
+      snv_cosmic = snv_cosmic %>% dplyr::select(gene, coding, contains("COSMIC"))
       # CANCER HOTSPOTS
       snv_cancerHotspot = wrapper_table_cancerHotspots(readr::read_tsv(paste0(dir_path, "/prep_snv.txt")))
-      snv_cancerHotspot = snv_cancerHotspot %>% dplyr::select(3:5, cancerHotspot)
+      snv_cancerHotspot = snv_cancerHotspot %>% dplyr::select(gene, coding, cancerHotspot)
 
       # GENE COLUMN NAME PROBLEM
       if(!'gene' %in% colnames(snv) & 'genes' %in% colnames(snv)){
