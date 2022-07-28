@@ -27,7 +27,8 @@ print("CLINVAR: loaded")
 
 
 ##### COSMIC VARIANT SQLITE database
-
+library(DBI)
+library(RSQLite)
 COSMIC_SQL <- '/home/ionadmin/ngs_variant_annotation/variantAnnotation/cosmic/cut_CosmicVariant.sdb'
 SQLITE <- DBI::dbDriver("SQLite")
 CONN <- dbConnect(SQLITE, COSMIC_SQL,
