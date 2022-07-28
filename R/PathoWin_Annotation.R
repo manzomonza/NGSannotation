@@ -60,8 +60,7 @@ diagnose_D_F_columns_snv <- function(variant_tbl){
   selection_tbl <- variant_tbl %>%
     dplyr::rename(Transcript_ID = transcript) %>%
     dplyr::select(Diagnose_D, Diagnose_F, Allelic_Frequency, BIMI_variant, Kommentar,IR_clinvar, Link_Methodik, gene, coding, three_AA, one_AA, clinvar_ready_AA, mtbp ) %>%
-    dplyr::rename(genes = gene,
-                  amino_acid_change = three_AA)
+    dplyr::rename(amino_acid_change = three_AA)
 
   selection_tbl <- selection_tbl %>%
     dplyr::mutate(order = orderSignificance(Diagnose_D)) %>%
