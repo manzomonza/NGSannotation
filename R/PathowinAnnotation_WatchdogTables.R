@@ -32,8 +32,6 @@ annotateWatchdogTables <- function(filepath){
       # TSG annotation
       snv_filepath = paste0(dir_path, "/prep_snv.txt")
 
-
-
       snv_tsg = tsgParseTable(readr::read_tsv(snv_filepath))
       snv_tsg = snv_tsg %>% dplyr::select(gene, coding, tsgInfo)
       print('tsg')
