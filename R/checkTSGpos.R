@@ -35,38 +35,17 @@ checkTSG <- function(gene, aa_pos, TSG_list){
 tsgParseTable <- function(snvtable){
   if(nrow(snvtable) >0){
     snvtable$tsgInfo = NA
+    snvtable$aa_position = NA
+    snvtable$aa_position = sapply(snvtable$one_AA, function(x) extract_snv_position(x))
     for (i in 1:nrow(snvtable)){
       if(grepl("\\*|fs", snvtable$one_AA[i])){
         snvtable$tsgInfo[i] = checkTSG(gene = snvtable$genes[i],
-                                       aa_pos = snvtable$aa_pos[i],
+                                       aa_pos = snvtable$aa_position[i],
                                        TSG_list = tsg_ls)
 
       }
     }
-    snvtable <- subset(snvtable, selec=-aa_pos)
+    snvtable <- subset(snvtable, selec=-aa_position)
     return(snvtable)
   }
 }
-
-#' Extract position of SNVs
-#'
-#' @param clinvar_ready_AA
-#'
-#' @return SNV amino-acid position
-#' @export
-#'
-#' @examples
-extract_snv_position <- function(aa_change){
-  if(is.character(aa_change) &  !is.na(aa_change)){
-    aa_pos = stringr::str_extract(string = aa_change, pattern = "(?<=\\D)\\d+")
-    aa_pos = as.integer(aa_pos)
-    return(aa_pos)
-  }else{
-    return(NA)
-  }
-}
-
-
-
-
-
