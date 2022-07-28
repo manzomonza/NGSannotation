@@ -36,7 +36,7 @@ tsgParseTable <- function(snvtable){
   if(nrow(snvtable) >0){
     snvtable$tsgInfo = NA
     snvtable$aa_position = NA
-    snvtable$aa_position = sapply(snvtable$one_AA, function(x) extract_snv_position(x))
+    snvtable$aa_position = unname(sapply(snvtable$one_AA, function(x) extract_snv_position(x)))
     for (i in 1:nrow(snvtable)){
       if(grepl("\\*|fs", snvtable$one_AA[i])){
         snvtable$tsgInfo[i] = checkTSG(gene = snvtable$gene[i],
@@ -45,7 +45,7 @@ tsgParseTable <- function(snvtable){
 
       }
     }
-    snvtable <- subset(snvtable, selec=-aa_position)
+    #snvtable <- subset(snvtable, selec=-aa_position)
     return(snvtable)
   }
 }
