@@ -4,7 +4,7 @@
 \alias{checkTSG}
 \title{Check if Gene is TSG and if variant leads to Ter or frameshift within 90% of AA length}
 \usage{
-checkTSG(gene, aa_position, TSG_list)
+checkTSG(gene, aa_pos, TSG_list)
 }
 \arguments{
 \item{TSG_list}{}
