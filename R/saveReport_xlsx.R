@@ -16,7 +16,8 @@ saveReport_xlsx <- function(filepath){
   if(grepl("Snvindel.tsv", filepath)){
     cnv =  readr::read_tsv(paste0(dirname(filepath), "/Cnv.tsv"), skip_empty_rows = TRUE)
     snv =  readr::read_tsv(paste0(dirname(filepath), "/Snvindel.tsv"), skip_empty_rows = TRUE)
-    annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt"))
+    annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt")) %>% dplyr::select(-(gene:clinvar_ready_AA))
+
     filtered = readr::read_tsv(paste0(dir_name, "/prep_filtered.txt"))
     infoFilepath = paste0(dirname(filepath), "/Info.csv")
     if(file.exists(infoFilepath)){
@@ -38,7 +39,7 @@ saveReport_xlsx <- function(filepath){
     ir_output =  readr::read_tsv(filepath, skip_empty_rows = TRUE, comment = "##")
     info_csv = readr::read_tsv(paste0(dir_name, "/Info.csv"))
     filtered = readr::read_tsv(paste0(dir_name, "/prep_filtered.txt"))
-    annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt"))
+    annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt")) %>% dplyr::select(-(gene:clinvar_ready_AA))
 
     ## Combine into list
     excel_file = list(ir_output, info_csv, filtered, annotation)
