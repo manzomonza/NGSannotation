@@ -1,5 +1,3 @@
-###
-
 #' Check if Gene is TSG and if variant leads to Ter or frameshift within 90% of AA length
 #'
 #' @param gene
