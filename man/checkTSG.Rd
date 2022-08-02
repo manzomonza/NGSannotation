@@ -2,7 +2,7 @@
 % Please edit documentation in R/checkTSGpos.R
 \name{checkTSG}
 \alias{checkTSG}
-\title{Checks if gene is part of TSG and checks position}
+\title{Check if Gene is TSG and if variant leads to Ter or frameshift within 90% of AA length}
 \usage{
 checkTSG(gene, aa_pos, TSG_list)
 }
@@ -13,5 +13,5 @@ checkTSG(gene, aa_pos, TSG_list)
 'likely pathogenic' if criteria are fullfilled, NA otherwise
 }
 \description{
-Checks if gene is part of TSG and checks position
+Check if Gene is TSG and if variant leads to Ter or frameshift within 90% of AA length
 }

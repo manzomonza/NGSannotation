@@ -2,7 +2,7 @@
 % Please edit documentation in R/checkTSGpos.R
 \name{tsgParseTable}
 \alias{tsgParseTable}
-\title{tsgParseTable Parse SNV which went through 'watchdog annotation' step}
+\title{tsgParseTable Checks SNV contains 'fs' or 'Ter'}
 \usage{
 tsgParseTable(snvtable)
 }
@@ -13,5 +13,5 @@ tsgParseTable(snvtable)
 snvtable with tsgInfo column added
 }
 \description{
-tsgParseTable Parse SNV which went through 'watchdog annotation' step
+tsgParseTable Checks SNV contains 'fs' or 'Ter'
 }
