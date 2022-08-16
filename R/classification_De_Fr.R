@@ -20,7 +20,7 @@ ClassficationDe <- function(input){
           if (input=="Likely pathogenic"){rep="wahrscheinlich pathogen"}else
             if (input=="Pathogenic/Likely pathogenic"){rep="pathogen/wahrscheinlich pathogen"}else
               if (input=="contradictory"){rep="widersprüchlich"}else
-                if (input=="Conflicting interpretations of pathogenicity"){rep="widersprüchlich hinsichtlich der Pathogenität"}else
+                if (input=="Conflicting interpretations of pathogenicity"){rep="unklar"}else
                   if (input=="not found in database"){rep="unklar"}else
                     if (input=="Uncertain significance"){rep="unklar"}else
                       if (input=="drug response"){rep="drug response"}else
@@ -45,17 +45,10 @@ ClassficationFr <- function(input){
           if (input=="Likely pathogenic"){rep="probablement pathogénique"}else
             if (input=="Pathogenic/Likely pathogenic"){rep="pathogénique/probablement pathogénique"}else
               if (input=="Contradictory"){rep="contradictoire"}else
-                if (input=="Conflicting interpretations of pathogenicity"){rep="contradictoire en ce qui concerne la pathogénicité"}else
+                if (input=="Conflicting interpretations of pathogenicity"){rep="inconnue"}else
                   if (input=="not found in database"){rep="inconnue"}else
-                    if (input=="Uncertain significance"){rep="incertaine"}else
+                    if (input=="Uncertain significance"){rep="inconnue"}else
                       if (input=="drug response"){rep="drug response"}else
                     {rep=input}
   return(rep);
 }
-
-
-
-
-
-
-
