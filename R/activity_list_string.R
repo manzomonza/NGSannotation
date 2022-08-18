@@ -19,8 +19,8 @@ activityList_format <- function(snv_prep_filepath, cnv_prep_filepath){
   cnv_prep = lapply(cnv_prep$rowid, function(i) row_activityList_format_cnv(cnv_prep[i,]))
   cnv_prep = cnv_prep[!is.na(cnv_prep)]
   cnv_prep_string = paste0(unlist(cnv_prep), collapse = "; ")
-  
   concatenated_string = paste0(snv_prep_string,"; ", cnv_prep_string)
+  concatenated_string = gsub("; $",'', concatenated_string)
   
   return(concatenated_string)
 }

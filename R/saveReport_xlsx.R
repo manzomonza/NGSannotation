@@ -13,6 +13,13 @@ saveReport_xlsx <- function(filepath){
   excel_file_name = paste0(excel_file_name, '_combined_output.xlsx')
   print("Filename shortened")
 
+  ## Activity list entry
+  prep_file_entries = prep_filepaths(filepath)
+  activityList_string = activityList_format(snv_prep_filepath = prep_file_entries$prep_snv,
+                                            cnv_prep_filepath = prep_file_entries$prep_cnv)
+  activityList = tibble::tibble(activityList_Entry = activityList_string)
+
+
   if(grepl("Snvindel.tsv", filepath)){
     cnv =  readr::read_tsv(paste0(dirname(filepath), "/Cnv.tsv"), skip_empty_rows = TRUE)
     snv =  readr::read_tsv(paste0(dirname(filepath), "/Snvindel.tsv"), skip_empty_rows = TRUE)
@@ -30,8 +37,11 @@ saveReport_xlsx <- function(filepath){
       info_csv = tibble::tibble(Metadata = "Info.csv not found, no metadata provided")
       sampleName = basename(dirname(filepath))
     }
-    excel_file = list(snv, cnv, info_csv, filtered, annotation)
-    names(excel_file) <- c("Snvindel.tsv", "Cnv.tsv", "Metadata", "Filtered_lines", "Annotation")
+
+
+
+    excel_file = list(snv, cnv, info_csv, filtered, annotation, activityList)
+    names(excel_file) <- c("Snvindel.tsv", "Cnv.tsv", "Metadata", "Filtered_lines", "Annotation", "activityList_Entry")
     writexl::write_xlsx(excel_file, path = paste0(dir_name, "/", sampleName, "_GXS_combined_output.xlsx"))
   }else{
     ## Files
@@ -40,9 +50,10 @@ saveReport_xlsx <- function(filepath){
     filtered = readr::read_tsv(paste0(dir_name, "/prep_filtered.txt"))
     annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt"))
 
+
     ## Combine into list
-    excel_file = list(ir_output, info_csv, filtered, annotation)
-    names(excel_file) <- c("IR_Output","Metadata", "Filtered_lines", "Annotation")
+    excel_file = list(snv, cnv, info_csv, filtered, annotation, activityList)
+    names(excel_file) <- c("IR_Output","Metadata", "Filtered_lines", "Annotation", "activityList_Entry")
     writexl::write_xlsx(excel_file, path = paste0(dir_name, "/", excel_file_name))
   }
 }
