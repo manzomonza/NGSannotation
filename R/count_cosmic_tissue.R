@@ -99,11 +99,11 @@ cosmic_counter_wrapper <- function(snv_table){
 #' @examples
 cosmic_counter_per_table_element <- function(table_element){
   if(is.na(table_element$amino_acid_change) | table_element$amino_acid_change == "p.?"){
-    cosmic_count = counter_cosmic_variant_tissue(gene = table_element$gene,
+    cosmic_count = cosmic_sql_search(gene = table_element$gene,
                                                 change = table_element$coding,
                                                 sql_con_tbl = CON_TBL)
   }else{
-    cosmic_count = counter_cosmic_variant_tissue(gene = table_element$gene,
+    cosmic_count = cosmic_sql_search(gene = table_element$gene,
                                                 change = table_element$one_AA,
                                                 sql_con_tbl = CON_TBL)
   }
