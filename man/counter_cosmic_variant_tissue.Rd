@@ -2,25 +2,16 @@
 % Please edit documentation in R/count_cosmic_tissue.R
 \name{counter_cosmic_variant_tissue}
 \alias{counter_cosmic_variant_tissue}
-\title{Count variant occurences per tissue in COSMIC db}
+\title{Count variant occurences per tissue in COSMIC db#'}
 \usage{
-counter_cosmic_variant_tissue(gene, change, sql_con_tbl)
+counter_cosmic_variant_tissue(variants_per_tissue)
 }
 \arguments{
-\item{gene}{Character string containing gene symbol}
-
-\item{change}{Character string with coding or amino acid change}
-
-\item{sql_con_tbl}{Established SQL connection to COSMIC db}
+\item{variants_per_tissue}{}
 }
 \value{
-Returns list with total count and tissue specific counts
+
 }
 \description{
-Count variant occurences per tissue in COSMIC db
-}
-\examples{
-GATA3 p.M294K returns list with
-COSMIC_n_tissue breast (43)
-COSMIC_n_total 43
+Count variant occurences per tissue in COSMIC db#'
 }

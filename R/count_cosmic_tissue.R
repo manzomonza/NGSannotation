@@ -10,30 +10,45 @@
 #' @examples GATA3 p.M294K returns list with
 #' COSMIC_n_tissue breast (43)
 #' COSMIC_n_total 43
-counter_cosmic_variant_tissue <- function(gene, change, sql_con_tbl){
+cosmic_sql_search <- function(gene, change, sql_con_tbl){
   require(magrittr)
   if(is.na(sql_con_tbl[1])){
     cosmic_results = list(COSMIC_n_tissue = NA,
                           COSMIC_n_total = NA)
     return(cosmic_results)
   }
-  #gene = paste0("%", gene, "%")
-  orig_change = change
+  gene = paste0("%", gene, "%")
+  #orig_change = change
   #change = paste0("%", change, "%")
-
   ##
   variants_per_tissue = sql_con_tbl %>%
     dplyr::filter(gene_name %LIKE% gene)
 
-  if(grepl("^c.", orig_change)){
+  if(grepl("^c.", change)){
   variants_per_tissue = variants_per_tissue %>%
     dplyr::filter(mutation_cds == change) %>%
-    dplyr::collect()
-  }else if(grepl("^p.", orig_change)){
+    dplyr::collect() %>%
+    dplyr::distinct()
+  }else if(grepl("^p.", change)){
     variants_per_tissue = variants_per_tissue %>%
       dplyr::filter(mutation_aa == change) %>%
-      dplyr::collect()
+      dplyr::collect() %>%
+      dplyr::distinct()
   }else{
+    variants_per_tissue = NA
+  }
+  return(variants_per_tissue)
+}
+
+#' Count variant occurences per tissue in COSMIC db#'
+#' @param variants_per_tissue
+#'
+#' @return
+#' @export
+#'
+#' @examples
+counter_cosmic_variant_tissue <- function(variants_per_tissue){
+  if(is.na(variants_per_tissue)){
     cosmic_results = list(COSMIC_n_tissue = NA,
                           COSMIC_n_total = NA)
     return(cosmic_results)
@@ -94,5 +109,4 @@ cosmic_counter_per_table_element <- function(table_element){
   }
   return(cosmic_count)
 }
-
 
