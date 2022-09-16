@@ -13,9 +13,9 @@
 cosmic_sql_search <- function(gene, change, sql_con_tbl){
   stopifnot(grepl("^c.", change) | grepl("^p.", change))
 
-  gene = paste0("%", gene, "%")
+  #gene = paste0("%", gene, "%")
   variants_per_tissue = sql_con_tbl %>%
-    dplyr::filter(gene_name %LIKE% gene)
+    dplyr::filter(gene_name == gene)
 
   if(grepl("^c.", change)){
   variants_per_tissue = variants_per_tissue %>%
