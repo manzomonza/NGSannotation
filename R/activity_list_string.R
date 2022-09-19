@@ -56,7 +56,7 @@ row_activityList_format_snv <- function(snv_prep_row){
 #'
 #' @examples BRAF: 10x (chr7)
 row_activityList_format_cnv <- function(cnv_prep_row){
-  if(is.na(cnv_prep_row$cnv_confidence)){
+  if(is.na(cnv_prep_row$fivePercent_conf) & is.na(cnv_prep_row$ninetyfivePercent_conf)){
     cnv_string = NA
   }else if(cnv_prep_row$fivePercent_conf >=4 | cnv_prep_row$ninetyfivePercent_conf <= 1){
     cnv_string = paste0(cnv_prep_row$gene, ": ", cnv_prep_row$copy_number,"x ","(chr", cnv_prep_row$chromosome,")")
