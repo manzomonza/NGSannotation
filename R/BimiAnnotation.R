@@ -10,7 +10,7 @@
 #' @examples
 bimiMatchUp <- function(clinvar_annot){
     if(file.exists(BIMI_TABLE_PATH)){
-      BIMI_TABLE = readr::read_tsv(BIMI_TABLE) %>%
+      BIMI_TABLE = readr::read_tsv(BIMI_TABLE_PATH) %>%
         dplyr::rename(three_AA = amino_acid_change,
                       gene = genes)
       stopifnot(nrow(clinvar_annot) > 0)
