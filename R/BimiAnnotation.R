@@ -9,7 +9,7 @@
 #'
 #' @examples
 bimiMatchUp <- function(clinvar_annot){
-    bimi_tbl = "/home/ionadmin/ngs_variant_annotation/variantAnnotation/NGS_mutation_list/BIMI_Variant_table.tsv"
+    bimi_tbl = BIMI_TABLE
     #bimi_tbl = "/Volumes/GoogleDrive/.shortcut-targets-by-id/1yuFiN1dlcUgo1_ELdNVXegTfB61oDv8G/Patientendaten/Development/tables/BIMI_Variant_table.tsv"
     if(file.exists(bimi_tbl)){
       bimi_tbl = readr::read_tsv(bimi_tbl) %>%
