@@ -23,7 +23,7 @@ saveReport_xlsx <- function(filepath){
   if(grepl("Snvindel.tsv", filepath)){
     cnv =  readr::read_tsv(paste0(dirname(filepath), "/Cnv.tsv"), skip_empty_rows = TRUE)
     snv =  readr::read_tsv(paste0(dirname(filepath), "/Snvindel.tsv"), skip_empty_rows = TRUE)
-    annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt")) %>% dplyr::select(-(gene:clinvar_ready_AA))
+    annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt"))
     annotation = annotation %>% dplyr::relocate(contains('COSMIC'), .after = last_col())
 
     filtered = readr::read_tsv(paste0(dir_name, "/prep_filtered.txt"))
