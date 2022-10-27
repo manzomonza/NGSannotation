@@ -47,7 +47,7 @@ saveReport_xlsx <- function(filepath){
     writexl::write_xlsx(excel_file, path = paste0(dir_name, "/", sampleName, "_GXS_combined_output.xlsx"))
   }else{
     ## Files
-    ir_output =  readr::read_tsv(filepath, skip_empty_rows = TRUE, comment = "##")
+    ir_output =  data.table(filepath, skip = "##")
     info_csv = readr::read_tsv(paste0(dir_name, "/Info.csv"))
     filtered = readr::read_tsv(paste0(dir_name, "/prep_filtered.txt"))
     annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt")) %>% dplyr::select(-(gene:clinvar_ready_AA))
