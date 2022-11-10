@@ -11,9 +11,6 @@ make_output_tables_precision(snv_indel, cnv)
 
 \item{cnv}{table containing cnvs}
 }
-\value{
-
-}
 \description{
 Generates output tables for precision
 }

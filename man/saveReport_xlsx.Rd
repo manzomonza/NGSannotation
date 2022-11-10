@@ -9,9 +9,6 @@ saveReport_xlsx(filepath)
 \arguments{
 \item{filepath}{}
 }
-\value{
-
-}
 \description{
 Save report to XLSX file
 }

@@ -9,9 +9,6 @@ mult100(IRoutput)
 \arguments{
 \item{IRoutput}{}
 }
-\value{
-
-}
 \description{
 Multiply by 100 or not
 }

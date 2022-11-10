@@ -9,9 +9,6 @@ wrapper_table_cancerHotspots(variantTable)
 \arguments{
 \item{variantTable}{}
 }
-\value{
-
-}
 \description{
 Apply cancerhotspot check to snv_variant table
 }

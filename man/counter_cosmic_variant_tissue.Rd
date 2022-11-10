@@ -9,9 +9,6 @@ counter_cosmic_variant_tissue(variants_per_tissue)
 \arguments{
 \item{variants_per_tissue}{}
 }
-\value{
-
-}
 \description{
 Count variant occurences per tissue in COSMIC db#'
 }

@@ -10,9 +10,6 @@ diagnose_D_F_columns_snv(variant_tbl)
 \arguments{
 \item{variant_tbl}{}
 }
-\value{
-
-}
 \description{
 ## Prepare Diagnosis column in German and French to be copy/pasted to Pathowin
 SNV annotation

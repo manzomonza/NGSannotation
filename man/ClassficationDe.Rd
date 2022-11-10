@@ -9,9 +9,6 @@ ClassficationDe(input)
 \arguments{
 \item{input}{}
 }
-\value{
-
-}
 \description{
 Translate clinvar clinical significance to german
 }

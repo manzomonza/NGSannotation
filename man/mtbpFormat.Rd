@@ -9,9 +9,6 @@ mtbpFormat(snvTable)
 \arguments{
 \item{snvTable}{}
 }
-\value{
-
-}
 \description{
 Ouput Karolinska MTBP compliant output
 }

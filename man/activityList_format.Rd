@@ -9,9 +9,6 @@ activityList_format(snv_prep_filepath, cnv_prep_filepath)
 \arguments{
 \item{snv_prep}{}
 }
-\value{
-
-}
 \description{
 Output single string of variants from  detected SNVs and CNVs
 }

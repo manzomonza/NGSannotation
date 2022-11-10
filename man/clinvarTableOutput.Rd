@@ -9,9 +9,6 @@ clinvarTableOutput(snv_tb)
 \arguments{
 \item{snv_tb}{}
 }
-\value{
-
-}
 \description{
 Combine single edited variants into table
 }

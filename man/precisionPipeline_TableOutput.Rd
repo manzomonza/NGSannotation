@@ -9,9 +9,6 @@ precisionPipeline_TableOutput(snvindel_path)
 \arguments{
 \item{snvindel_path}{}
 }
-\value{
-
-}
 \description{
 ## Output Tables pipelines
 }

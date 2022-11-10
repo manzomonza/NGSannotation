@@ -9,9 +9,6 @@ annotateWatchdogTables(filepath)
 \arguments{
 \item{filepath}{}
 }
-\value{
-
-}
 \description{
 ### Annotate files in watchdog folder
 }

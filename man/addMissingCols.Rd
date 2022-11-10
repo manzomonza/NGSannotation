@@ -9,9 +9,6 @@ addMissingCols(ir_output)
 \arguments{
 \item{ir_output}{}
 }
-\value{
-
-}
 \description{
 Add missing columns to make inconsistent IR output work
 }

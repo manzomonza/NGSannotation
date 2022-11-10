@@ -9,9 +9,6 @@ FusionOutput(fusionpath)
 \arguments{
 \item{fusionpath}{}
 }
-\value{
-
-}
 \description{
 Generate Combined output file for Fusion.tsv
 }

@@ -9,9 +9,6 @@ fsClinvarfix(amino_acid_change)
 \arguments{
 \item{amino_acid_change}{}
 }
-\value{
-
-}
 \description{
 Frameshift clinvar fix
 }

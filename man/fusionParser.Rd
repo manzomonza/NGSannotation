@@ -9,9 +9,6 @@ fusionParser(fusionpath)
 \arguments{
 \item{filepath}{}
 }
-\value{
-
-}
 \description{
 Parses Precision RNA Fusion.tsv
 }

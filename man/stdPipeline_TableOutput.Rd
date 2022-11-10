@@ -10,9 +10,6 @@ stdPipeline_TableOutput(snv_filepath)
 \arguments{
 \item{snv_filepath}{}
 }
-\value{
-
-}
 \description{
 Pipeline from intro file to Watchdog output files.
 These files can be used for further downstream/alternative website processing.

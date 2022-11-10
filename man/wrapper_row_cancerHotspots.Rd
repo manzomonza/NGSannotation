@@ -9,9 +9,6 @@ wrapper_row_cancerHotspots(variantRow)
 \arguments{
 \item{variantRow}{}
 }
-\value{
-
-}
 \description{
 Apply cancerhotspot check to single row
 }

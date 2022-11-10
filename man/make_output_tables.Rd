@@ -9,9 +9,6 @@ make_output_tables(ir_output)
 \arguments{
 \item{ir_output}{}
 }
-\value{
-
-}
 \description{
 Generate tables to export
 }

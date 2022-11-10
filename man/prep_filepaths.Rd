@@ -9,9 +9,6 @@ prep_filepaths(filepath)
 \arguments{
 \item{filepath}{}
 }
-\value{
-
-}
 \description{
 From filepath to watchdog/prep filepaths
 }

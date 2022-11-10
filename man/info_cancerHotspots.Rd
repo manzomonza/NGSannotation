@@ -9,9 +9,6 @@ info_cancerHotspots(geneName, snv_position)
 \arguments{
 \item{snv_position}{}
 }
-\value{
-
-}
 \description{
 Retrieve if variant codon position is covered in cancerHotspots (v2)
 }

@@ -9,9 +9,6 @@ renameCol(IRoutput)
 \arguments{
 \item{IRoutput}{}
 }
-\value{
-
-}
 \description{
 Renaming of inconsistently named columns
 }

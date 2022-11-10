@@ -9,9 +9,6 @@ readIn(filepath)
 \arguments{
 \item{filepath}{}
 }
-\value{
-
-}
 \description{
 Read in files
 }

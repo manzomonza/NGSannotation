@@ -9,9 +9,6 @@ complex_one_to_three(parsestring)
 \arguments{
 \item{parsestring}{}
 }
-\value{
-
-}
 \description{
 #### Complex One To Three AA switch
 }

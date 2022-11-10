@@ -9,9 +9,6 @@ splicesite_Annot(variant_table)
 \arguments{
 \item{variant_table}{}
 }
-\value{
-
-}
 \description{
 ### splice site annotation Function to interrogate if variant occurs in splice site
 }

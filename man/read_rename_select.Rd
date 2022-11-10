@@ -9,9 +9,6 @@ read_rename_select(filepath)
 \arguments{
 \item{filepath}{}
 }
-\value{
-
-}
 \description{
 read in, rename and select
 }

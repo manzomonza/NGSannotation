@@ -9,9 +9,6 @@ exonAnnot(mutation_table)
 \arguments{
 \item{mutation_table}{}
 }
-\value{
-
-}
 \description{
 ### ExonAnnot
 }

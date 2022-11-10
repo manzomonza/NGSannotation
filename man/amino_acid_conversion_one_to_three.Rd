@@ -9,9 +9,6 @@ amino_acid_conversion_one_to_three(amino_acid_change_entry)
 \arguments{
 \item{amino_acid_change_entry}{}
 }
-\value{
-
-}
 \description{
 ###### Change one letter to three letter code
 }

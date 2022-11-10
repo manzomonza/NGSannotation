@@ -9,9 +9,6 @@ infoName(Infofilepath)
 \arguments{
 \item{filepath}{}
 }
-\value{
-
-}
 \description{
 Extract Sample name information from Genexus/Precision Info.csv
 }

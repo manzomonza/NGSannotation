@@ -9,9 +9,6 @@ bimiMatchUp(clinvar_annot)
 \arguments{
 \item{clinvar_annot}{}
 }
-\value{
-
-}
 \description{
 Match Variant with BIMI table
 }

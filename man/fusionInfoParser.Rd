@@ -9,9 +9,6 @@ fusionInfoParser(infopath)
 \arguments{
 \item{infopath}{}
 }
-\value{
-
-}
 \description{
 Parse Fusion info
 }

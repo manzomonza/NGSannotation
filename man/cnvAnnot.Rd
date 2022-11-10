@@ -9,9 +9,6 @@ cnvAnnot(variant_table)
 \arguments{
 \item{variant_table}{}
 }
-\value{
-
-}
 \description{
 Annotate CNVs
 }

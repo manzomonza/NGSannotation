@@ -9,9 +9,6 @@ clinvarSingleRow(srvt)
 \arguments{
 \item{srvt}{}
 }
-\value{
-
-}
 \description{
 Edit single variant
 }

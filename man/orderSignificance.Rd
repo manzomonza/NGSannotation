@@ -9,9 +9,6 @@ orderSignificance(diagnosestring)
 \arguments{
 \item{diagnosestring}{}
 }
-\value{
-
-}
 \description{
 Order by clinical significance
 }

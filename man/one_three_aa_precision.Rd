@@ -9,9 +9,6 @@ one_three_aa_precision(trimmed_string)
 \arguments{
 \item{trimmed_string}{}
 }
-\value{
-
-}
 \description{
 ####### Simple One To Three AA amino acid switch, used in aa_parser_singleletter
 }

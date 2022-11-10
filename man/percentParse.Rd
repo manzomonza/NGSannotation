@@ -9,9 +9,6 @@ percentParse(percent_frequency)
 \arguments{
 \item{percent_frequency}{}
 }
-\value{
-
-}
 \description{
 Percent Frequency parsing
 }
