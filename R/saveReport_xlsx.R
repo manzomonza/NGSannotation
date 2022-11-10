@@ -40,8 +40,6 @@ saveReport_xlsx <- function(filepath){
       sampleName = basename(dirname(filepath))
     }
 
-
-
     excel_file = list(snv, cnv, info_csv, filtered, annotation, activityList)
     names(excel_file) <- c("Snvindel.tsv", "Cnv.tsv", "Metadata", "Filtered_lines", "Annotation", "activityList_Entry")
     writexl::write_xlsx(excel_file, path = paste0(dir_name, "/", sampleName, "_GXS_combined_output.xlsx"))
@@ -50,7 +48,7 @@ saveReport_xlsx <- function(filepath){
     ir_output = data.table::fread(filepath, skip = "##")
     info_csv = readr::read_tsv(paste0(dir_name, "/Info.csv"))
     filtered = readr::read_tsv(paste0(dir_name, "/prep_filtered.txt"))
-    annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt")) %>% dplyr::select(-(gene:clinvar_ready_AA))
+    annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt")) %>% dplyr::select(-c(one_AA:clinvar_ready_AA))
     annotation = annotation %>% dplyr::relocate(contains('COSMIC'), .after = last_col())
 
 ## Combine into list
