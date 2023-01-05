@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-cp_mv_gnxs = function(infofilepath, dirname){
+cp_mv_gnxs = function(infofilepath, directory_name){
   base_filename = basename(infofilepath)
   file.copy(from=infofilepath,
             to = dirname)
