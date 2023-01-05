@@ -25,14 +25,14 @@ saveReport_xlsx <- function(filepath){
     snv =  readr::read_tsv(paste0(dirname(filepath), "/Snvindel.tsv"), skip_empty_rows = TRUE)
     annotation = readr::read_tsv(paste0(dir_name, "/clinvar_annotation.txt"))
     annotation = annotation %>% dplyr::relocate(contains('COSMIC'), .after = last_col())
-
     filtered = readr::read_tsv(paste0(dir_name, "/prep_filtered.txt"))
+
     infoFilepath = paste0(dirname(filepath), "/Info.csv")
     if(file.exists(infoFilepath)){
       ## Files
       info_csv = readr::read_tsv(infoFilepath)
       sampleName = infoName(infoFilepath)
-      file.copy(from = infoFilepath, to = dir_name)
+      cp_mv_gnxs(infoFilepath)
 
 
     }else{
