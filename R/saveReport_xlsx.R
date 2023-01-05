@@ -32,7 +32,7 @@ saveReport_xlsx <- function(filepath){
       ## Files
       info_csv = readr::read_tsv(infoFilepath)
       sampleName = infoName(infoFilepath)
-      cp_mv_gnxs(infoFilepath=infoFilepath,directory_name = dir_name)
+      cp_mv_gnxs(infofilepath=infoFilepath,directory_name = dir_name)
 
 
     }else{
