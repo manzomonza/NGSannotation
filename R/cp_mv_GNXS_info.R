@@ -1,7 +1,7 @@
 #'  COPY and rename GNXSinfo to GNXS_metadata
 #'
 #' @param infofilepath
-#' @param dirname
+#' @param directory_name
 #'
 #' @return
 #' @export
@@ -10,6 +10,6 @@
 cp_mv_gnxs = function(infofilepath, directory_name){
   base_filename = basename(infofilepath)
   file.copy(from=infofilepath,
-            to = dirname)
-  file.rename(from = paste0(dirname,"/", base_filename), to=paste0(dirname,"/GNXS_metadata.txt"))
+            to = directory_name)
+  file.rename(from = paste0(directory_name,"/", base_filename), to=paste0(directory_name,"/GNXS_metadata.txt"))
 }
