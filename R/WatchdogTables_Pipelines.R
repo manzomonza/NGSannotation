@@ -28,7 +28,7 @@ precisionPipeline_TableOutput <- function(snvindel_path){
 #'
 #' @examples
 stdPipeline_TableOutput <- function(snv_filepath){
-  ir_output = read_rename_select(snv_filepath)
+  ir_output = read_rename_select(snv_filepath) %>% splicesite_Annot()
   output_tables <- make_output_tables(ir_output)
   create_output_files(list_of_tables = output_tables,
                       filepath = snv_filepath)

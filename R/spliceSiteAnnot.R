@@ -31,13 +31,11 @@ splicesite_rowwise <- function(srvt){
     srvt$cds_region = ifelse(is.na(srvt$exon), '', 'exon')
     srvt$cds_region_No = as.numeric(ifelse(is.na(srvt$exon), '', srvt$exon))
   }else{
-    srvt$cds_region = ifelse(grepl("splice|intronic", srvt$location), "intron", "exon")
+    srvt$cds_region = ifelse(grepl("splice|intron", srvt$location), "intron", "exon")
     srvt$cds_region_No = as.numeric(ifelse(is.na(srvt$exon), NA,
                                ifelse(srvt$cds_region == "intron" & grepl("-", srvt$coding),
                                       as.numeric(srvt$exon) - 1, as.numeric(srvt$exon) ) ) )
   }
   return(srvt)
 }
-
-
 
