@@ -1,4 +1,3 @@
-
 #' read in, rename and select
 #'
 #' @param filepath
@@ -14,6 +13,7 @@ read_rename_select <- function(filepath){
   #print(paste0("Multiple by 100?: ", frequency_col_mult100))
   ir_output <- readIn(filepath) %>%
     renameCol() %>%
+    gene_symbol_sub_table() %>%
     addMissingCols() %>%
     dplyr::select(type, gene, coding, amino_acid_change, percent_frequency, location,
                   transcript, exon, locus, copy_number, cnv_confidence, IR_clinvar) %>%
@@ -24,12 +24,21 @@ read_rename_select <- function(filepath){
 }
 
 
+#' Read rename select for GNXS files
+#'
+#' @param filepath
+#'
+#' @return
+#' @export
+#'
+#' @examples
 read_rename_select_precision_snv <- function(filepath){
   frequency_col_mult100 = readIn(filepath) %>%
     mult100()
   snvindelx <- readIn(filepath) %>%
     addMissingCols() %>%
     renameCol() %>%
+    gene_symbol_sub_table() %>%
     snvParse() %>%
     dplyr::ungroup() %>%
     dplyr::select(-transcript) %>%
