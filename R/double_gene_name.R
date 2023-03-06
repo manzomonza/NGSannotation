@@ -29,8 +29,7 @@ gene_symbol_sub = function(gene_symbol){
 #'
 #' @examples
 gene_symbol_sub_table = function(snvtable){
-  snvtable$gene = sapply(snvtable$gene,gene_symbol_sub)
+  snvtable$gene = sapply(snvtable$gene, gene_symbol_sub)
   return(snvtable)
 }
-
 
