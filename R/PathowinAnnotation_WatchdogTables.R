@@ -64,6 +64,12 @@ annotateWatchdogTables <- function(filepath){
       print('snv_cancerHotspot')
       #Join cancerhotspot
       snv = dplyr::left_join(snv, snv_cancerHotspot, by = c("gene", 'coding'))
+
+      print('snv_panel_count')
+      #Join cancerhotspot
+      panel_count = count_variants_per_panel(snv, SNV_COUNT)
+      snv = dplyr::left_join(snv, panel_count, by = c("gene", 'coding'))
+
     }
     if(nrow(snv) > 0 & nrow(cnv) > 0){
       annotation = dplyr::bind_rows(snv, cnv)
