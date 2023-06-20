@@ -66,7 +66,7 @@ annotateWatchdogTables <- function(filepath){
       snv = dplyr::left_join(snv, snv_cancerHotspot, by = c("gene", 'coding'))
 
       print('snv_panel_count')
-      #Join cancerhotspot
+      #Join variant_panel count
       panel_count = count_variants_per_panel(snv, SNV_COUNT)
       snv = dplyr::left_join(snv, panel_count)
 
