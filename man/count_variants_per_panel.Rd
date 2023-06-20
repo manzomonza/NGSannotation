@@ -2,13 +2,15 @@
 % Please edit documentation in R/count_variants_per_panel.R
 \name{count_variants_per_panel}
 \alias{count_variants_per_panel}
-\title{# COUNT Variants per panel -- only SNVs for now.}
+\title{Output counts of variants per panel
+only SNVs for now}
 \usage{
-count_variants_per_panel(prep_tbl, SNV_COUNT)
+count_variants_per_panel(prep_tbl, default = SNV_COUNT)
 }
 \arguments{
 \item{SNV_COUNT}{}
 }
 \description{
-# COUNT Variants per panel -- only SNVs for now.
+Output counts of variants per panel
+only SNVs for now
 }
