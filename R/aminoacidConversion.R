@@ -90,16 +90,18 @@ amino_acid_conversion_one_to_three <- function(amino_acid_change_entry){
 one_three_aa_precision <- function(trimmed_string){
   lett = stringr::str_extract_all(trimmed_string, stringr::regex(pattern = '[[A-Z]]'))[[1]]
   position = stringr::str_extract(trimmed_string, stringr::regex(pattern = '\\d+'))
-
   lett = sapply(lett, function(x) aminocode[x])
-  if(is.na(lett[2])){
+
+  if(grepl("\\*", trimmed_string)){
+    three_letter_code = paste0("p.", lett[1], position, "*")
+  }else if(is.na(lett[2])){
     three_letter_code = paste0("p.", lett[1], position)
-  }else{
+  }
+  else{
     three_letter_code = paste0("p.", lett[1], position, lett[2])
   }
   return(three_letter_code)
 }
-
 
 
 

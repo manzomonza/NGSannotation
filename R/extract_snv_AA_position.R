@@ -13,6 +13,7 @@ extract_snv_position <- function(aa_change){
     return(aa_pos)
   }else{
     return(NA)
+
   }
 }
 
