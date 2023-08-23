@@ -19,7 +19,6 @@ saveReport_xlsx <- function(filepath){
                                             cnv_prep_filepath = prep_file_entries$prep_cnv)
   activityList = tibble::tibble(activityList_Entry = activityList_string)
 
-
   if(grepl("Snvindel.tsv", filepath)){
     cnv =  readr::read_tsv(paste0(dirname(filepath), "/Cnv.tsv"), skip_empty_rows = TRUE)
     snv =  readr::read_tsv(paste0(dirname(filepath), "/Snvindel.tsv"), skip_empty_rows = TRUE)

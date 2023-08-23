@@ -53,6 +53,5 @@ renameCol <- function(IRoutput){
   if ("clin_var" %in% colnames(IRoutput)){
     IRoutput <- IRoutput %>% dplyr::rename(IR_clinvar = clin_var)
   }
-
   return(IRoutput)
 }
